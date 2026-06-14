@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Die Programmierung des Menschen",
+    "slug": "programmierung-des-menschen",
+    "href": "articles/programmierung-des-menschen.html",
+    "summary": "Es gibt Momente im Leben, in denen eine tiefe Frage plötzlich aufbricht – oft nicht durch spektakuläre Erlebnisse, sondern mitten im Alltag: beim Blick in den Himmel, in einer kurzen Stille zwischen zwei Gedanken oder nach einem Traum."
+  },
+  {
+    "title": "Die Gefahren des Transhumanismus und der künstlichen Intelligenz",
+    "slug": "transhuman",
+    "href": "articles/transhuman.html",
+    "summary": "Die digitale Transformation unseres Gesundheitswesens ist längst keine Zukunftsvision mehr. Digitalisierung, Algorithmisierung und Ökonomisierung greifen immer tiefer in medizinische und gesellschaftliche Prozesse ein."
+  }
+]

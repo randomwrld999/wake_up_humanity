@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>WAKE UP HUMANITY</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ======================================================
+   RESET
+====================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#050505;
+  --surface: rgba(255,255,255,0.03);
+  --surface-2: rgba(255,255,255,0.02);
+  --text:#f5f5f5;
+  --muted: rgba(255,255,255,0.58);
+  --line: rgba(255,255,255,0.08);
+  --accent:#8b7dff;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Inter",sans-serif;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ======================================================
+   BACKGROUND
+====================================================== */
+
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-10;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(139,125,255,0.16), transparent 35%),
+    radial-gradient(circle at 80% 90%, rgba(255,255,255,0.04), transparent 35%),
+    #050505;
+}
+
+.noise{
+  position:fixed;
+  inset:0;
+  z-index:-9;
+  opacity:0.025;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+/* ======================================================
+   FLOATING LINES
+====================================================== */
+
+.lines{
+  position:fixed;
+  inset:0;
+  z-index:-8;
+  pointer-events:none;
+}
+
+.lines::before,
+.lines::after{
+  content:"";
+  position:absolute;
+  width:1px;
+  height:100%;
+  background: linear-gradient(transparent, rgba(255,255,255,0.08), transparent);
+}
+
+.lines::before{ left:70px; }
+.lines::after{ right:70px; }
+
+/* ======================================================
+   HEADER
+====================================================== */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:28px 70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:999;
+  backdrop-filter:blur(24px);
+  background: rgba(5,5,5,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.logo{
+  font-size:.75rem;
+  text-transform:uppercase;
+  letter-spacing:.4em;
+  color:white;
+}
+
+nav{
+  display:flex;
+  gap:35px;
+}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:.84rem;
+  transition:.35s ease;
+}
+
+nav a:hover{
+  color:white;
+}
+
+/* ======================================================
+   GLOBAL
+====================================================== */
+
+section{
+  position:relative;
+  max-width:1250px;
+  margin:auto;
+  padding:180px 9%;
+}
+
+.label{
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.4em;
+  color:var(--muted);
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+}
+
+.hero-glow{
+  position:absolute;
+  width:900px;
+  height:900px;
+  background: radial-gradient(circle, rgba(139,125,255,0.18), transparent 60%);
+  filter:blur(120px);
+  animation: pulse 10s ease-in-out infinite;
+  z-index:-1;
+}
+
+@keyframes pulse{
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
+}
+
+.hero-title{
+  font-family: "Cormorant Garamond",serif;
+  font-size: clamp(4.5rem,12vw,9rem);
+  line-height:.9;
+  letter-spacing:-0.04em;
+  margin-top:35px;
+}
+
+.hero-text{
+  margin-top:55px;
+  max-width:760px;
+  margin-inline:auto;
+  line-height:1.85;
+  color:var(--muted);
+  font-size:1.05rem;
+}
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+
+.buttons{
+  margin-top:70px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  position:relative;
+  padding:15px 30px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:.82rem;
+  letter-spacing:.12em;
+  transition:.45s ease;
+  overflow:hidden;
+}
+
+.btn-primary{
+  background:white;
+  color:black;
+}
+
+.btn-primary:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(255,255,255,0.16);
+}
+
+.btn-secondary{
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.02);
+  color:white;
+  backdrop-filter:blur(20px);
+}
+
+.btn-secondary:hover{
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-4px);
+}
+
+/* ======================================================
+   MANIFEST
+====================================================== */
+
+.manifest-box{
+  position:relative;
+  padding:100px;
+  border-radius:38px;
+  overflow:hidden;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(28px);
+}
+
+.manifest-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at top left, rgba(139,125,255,0.14), transparent 35%);
+}
+
+.h2{
+  font-family: "Cormorant Garamond",serif;
+  font-size: clamp(2.8rem,5vw,5rem);
+  line-height:1;
+  margin-top:28px;
+}
+
+.manifest-box p{
+  margin-top:55px;
+  max-width:760px;
+  line-height:1.85;
+  color:var(--muted);
+  font-size:1.02rem;
+}
+
+/* ======================================================
+   QUOTE
+====================================================== */
+
+.quote{
+  font-family: "Cormorant Garamond",serif;
+  font-size: clamp(2rem,4vw,4rem);
+  line-height:1.45;
+  max-width:950px;
+  margin:auto;
+  text-align:center;
+  color: rgba(255,255,255,0.95);
+}
+
+/* ======================================================
+   ARTICLES
+====================================================== */
+
+.card.theme-mind{
+  background:
+    linear-gradient(145deg, rgba(12,16,27,0.96), rgba(139,125,255,0.14)),
+    rgba(255,255,255,0.03);
+  border-color: rgba(139,125,255,0.22);
+}
+
+.card.theme-future{
+  background:
+    linear-gradient(145deg, rgba(8,14,18,0.98), rgba(101,216,255,0.12)),
+    rgba(255,255,255,0.03);
+  border-color: rgba(101,216,255,0.22);
+}
+
+.card.theme-mind::after,
+.card.theme-future::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 25%),
+    linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.03) 100%);
+  pointer-events:none;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.grid{
+  margin-top:70px;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap:28px;
+}
+
+.card{
+  position:relative;
+  padding:42px;
+  border-radius:28px;
+  overflow:hidden;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition:.45s ease;
+  backdrop-filter:blur(18px);
+text-decoration:none;
+color:white;
+display:block;}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at top left, rgba(139,125,255,0.14), transparent 45%);
+  opacity:0;
+  transition:.45s ease;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card:hover{
+  transform: translateY(-10px);
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.card-number{
+  color: rgba(255,255,255,0.28);
+  font-size:.75rem;
+  letter-spacing:.2em;
+  margin-bottom:25px;
+}
+
+.card h3{
+  font-family: "Cormorant Garamond",serif;
+  font-size:2rem;
+  line-height:1.1;
+}
+
+.card p{
+  margin-top:25px;
+  color:var(--muted);
+  line-height:1.9;
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+
+footer{
+  padding:80px 9%;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  color: rgba(255,255,255,0.42);
+  font-size:.9rem;
+}
+
+/* ======================================================
+   REVEAL
+====================================================== */
+
+.reveal{
+  opacity:0;
+  transform: translateY(60px);
+  filter:blur(10px);
+  transition: 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.active{
+  opacity:1;
+  transform: translateY(0);
+  filter:blur(0);
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media(max-width:900px){
+  header{ padding:24px; }
+  nav{ display:none; }
+  .lines{ display:none; }
+  section{ padding:140px 7%; }
+  .manifest-box{ padding:50px 35px; }
+  footer{ flex-direction:column; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="noise"></div>
+<div class="lines"></div>
+
+<header>
+  <div class="logo">WAKE UP HUMANITY</div>
+  <nav>
+    <a href="#manifest">Manifest</a>
+    <a href="#articles">Artikel</a>
+    <a href="#quote">Gedanken</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <div class="reveal">
+    <div class="label">Bewusstsein • Realität • Menschlichkeit</div>
+
+    <h1 class="hero-title">WAKE UP HUMANITY</h1>
+
+    <div class="hero-text">
+      Irgendwann hörten Menschen auf, wirklich hinzusehen. Die eigene Wahrnehmung verstummte. An ihre Stelle trat ein permanenter Strom vorgefertigter Wirklichkeiten.
+    </div>
+
+    <div class="buttons">
+      <a href="#manifest" class="btn btn-primary">Manifest</a>
+      <a href="#articles" class="btn btn-secondary">Artikel entdecken</a>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFEST -->
+<section id="manifest" class="reveal">
+  <div class="manifest-box">
+    <div class="label">Manifest</div>
+    <h2 class="h2">Warum diese Plattform existiert</h2>
+    <p>
+      Diese Plattform ist ein ruhiger Raum. Ein Raum für Menschlichkeit, für Denken, für innere Freiheit und für echte Verbindung zwischen Menschen.<br><br>
+      
+      Sie entsteht nicht aus Ideologien und nicht aus dem Wunsch zu überzeugen. Sondern aus dem Versuch, Spaltung nicht weiter zu verstärken, sondern sie sichtbar zu machen — und dadurch zu überwinden.<br><br>
+      
+      Bewusstes Hinterfragen ist dabei kein Ziel, sondern ein Anfang.
+    </p>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section id="quote" class="reveal">
+  <div class="quote">
+    Der Mensch ist weit mehr als sein Körper.<br>
+    Doch solange er sich mit ihm identifiziert,<br>
+    bleibt er in einer selbstgewählten Begrenzung gefangen.
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section id="articles" class="reveal">
+  <div class="section-head">
+    <div>
+      <div class="label"></div>
+      <h2 class="h2">Artikel</h2>
+    </div>
+  </div>
+
+  <div id="article-grid" class="grid"></div>
+</section>
+
+<footer>
+  <div>© 2026 WAKE UP HUMANITY</div>
+  <div>Bewusstsein • Realität • Menschlichkeit</div>
+</footer>
+
+<script>
+/* REVEAL */
+const reveals = document.querySelectorAll(".reveal");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("active");
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach((el) => observer.observe(el));
+
+const articleGrid = document.getElementById("article-grid");
+
+window.__ARTICLES__ = [
+  {
+    "title": "Die Programmierung des Menschen",
+    "slug": "programmierung-des-menschen",
+    "href": "articles/programmierung-des-menschen.html",
+    "summary": "Es gibt Momente im Leben, in denen eine tiefe Frage plötzlich aufbricht – oft nicht durch spektakuläre Erlebnisse, sondern mitten im Alltag: beim Blick in den Himmel, in einer kurzen Stille zwischen zwei Gedanken oder nach einem Traum."
+  },
+  {
+    "title": "Die Gefahren des Transhumanismus und der künstlichen Intelligenz",
+    "slug": "transhuman",
+    "href": "articles/transhuman.html",
+    "summary": "Die digitale Transformation unseres Gesundheitswesens ist längst keine Zukunftsvision mehr. Digitalisierung, Algorithmisierung und Ökonomisierung greifen immer tiefer in medizinische und gesellschaftliche Prozesse ein."
+  }
+];
+
+async function loadArticles() {
+  if (!articleGrid) return;
+
+  const themes = ["theme-mind", "theme-future"];
+  let articles = window.__ARTICLES__;
+
+  if (!articles) {
+    try {
+      const response = await fetch("articles/manifest.json");
+      if (!response.ok) throw new Error("Manifest not found");
+      articles = await response.json();
+    } catch (error) {
+      articleGrid.innerHTML = '<p style="color:rgba(255,255,255,0.75)">Die Artikelübersicht wird nach dem Generieren der Inhalte automatisch aktualisiert.</p>';
+      return;
+    }
+  }
+
+  articleGrid.innerHTML = articles
+    .map((article, index) => `
+      <a href="${article.href}" class="card ${themes[index] || "theme-mind"}" aria-label="${article.title}">
+        <div class="card-number">${String(index + 1).padStart(2, "0")}</div>
+        <h3>${article.title}</h3>
+        <p>${article.summary}</p>
+      </a>
+    `)
+    .join("");
+}
+
+loadArticles();
+</script>
+
+</body>
+</html>
